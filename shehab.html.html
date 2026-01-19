@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)file:///C:/Users/OPT/Desktop/Shehab%20Tech.html.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shehab Tech - Professional Translation &amp; Tech Solutions</title>
+    <meta name="description" content="Shehab Tech offers professional translation, voice over, web development, transcription, data annotation, mobile apps, and Excel automation services.">
+    <link href="./Shehab Tech - Professional Translation &amp; Tech Solutions_files/css2" rel="stylesheet">
+    <link rel="stylesheet" href="./Shehab Tech - Professional Translation &amp; Tech Solutions_files/all.min.css">
+    <script src="./Shehab Tech - Professional Translation &amp; Tech Solutions_files/exec"></script>
+    <style>
+        :root {
+            --primary: #1E3A8A;
+            --secondary: #0D9488;
+            --accent: #F59E0B;
+            --dark: #0F172A;
+            --light: #F8FAFC;
+            --white: #FFFFFF;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: #334155;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+
+        function doPost(e) {
+  var sheet = SpreadsheetApp
+    .openById("https://docs.google.com/spreadsheets/d/1FQNNgFhAG_KEUU-A3PapxNgWQ1N8PufP4N-DMY1XRJk/edit?usp=drivesdk")
+    .getSheetByName("Sheet1");
+
+  var data = JSON.parse(e.postData.contents);
+
+  sheet.appendRow([
+    data.name,
+    data.email,
+    data.service,
+    data.details,
+    new Date()
+  ]);
+
+  return ContentService
+    .createTextOutput(JSON.stringify({ success: true }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #334155;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1E3A8A 0%, #0D9488 50%, #0F172A 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 5vw, 5rem);
+            font-weight: 700;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1.2rem 3rem;
+            border: 2px solid white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #64748B;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            border-top: 4px solid transparent;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-top-color: var(--primary);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .service-card p {
+            color: #64748B;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            background: white;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .portfolio-overlay {
+            padding: 2rem 1.5rem 1.5rem;
+            background: white;
+        }
+
+        .portfolio-overlay h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .portfolio-overlay p {
+            color: #64748B;
+            font-size: 0.95rem;
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--dark);
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .contact-item i {
+            width: 40px;
+            background: var(--secondary);
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.9);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(30,58,138,0.1);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 0 1.5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu { display: flex; }
+            .nav-menu { 
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: var(--shadow);
+            }
+            .nav-menu.active { display: flex; }
+            .hero-container { 
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            .contact-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .hero-ctas { flex-direction: column; align-items: center; }
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255,255,255,0.98);
+        }
+    </style>
+<script>
+const form = document.getElementById("contact-form");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    document.getElementById("submit-text").style.display = "none";
+    document.getElementById("loading-text").style.display = "inline";
+
+    const data = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        service: document.getElementById("service").value,
+        message: document.getElementById("message").value
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbwqkQCnyaDHubiF0c90YYlIZ-0cBhwAttHouBDJVBHBXSJwa-xA5MmweO75pi5Fs467mQ/exec", {
+        method: "POST",
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.status === "success") {
+            alert("Message sent successfully!");
+            form.reset();
+        } else {
+            alert("Error sending message");
+        }
+    })
+    .catch(error => {
+        alert("Something went wrong!");
+        console.error(error);
+    })
+    .finally(() => {
+        document.getElementById("submit-text").style.display = "inline";
+        document.getElementById("loading-text").style.display = "none";
+    });
+});
+</script></head>
+
+
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="file:///C:/Users/OPT/Desktop/Shehab%20Tech.html.html#" class="logo">Shehab Tech</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="file:///C:/Users/OPT/Desktop/Shehab%20Tech.html.html#home" class="nav-link">Home</a></li>
+                <li><a href="file:///C:/Users/OPT/Desktop/Shehab%20Tech.html.html#services" class="nav-link">Services</a></li>
+                <li><a href="file:///C:/Users/OPT/Desktop/Shehab%20Tech.html.html#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="file:///C:/Users/OPT/Desktop/Shehab%20Tech.html.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="file:///C:/Users/OPT/Desktop/Shehab%20Tech.html.html#contact" class="cta-button">Contact Us</a>
+            <div class="mobile-menu" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="animate" style="animation-delay: 0.103504s;">Programing<br>&amp;AI Projects</h1>
+                <p class="subtitle animate" style="animation-delay: 0.0271611s;">Shehab Tech delivers expert translation, voice over, web development, transcription, data annotation, mobile apps, and Excel automation services worldwide.</p>
+                <div class="hero-ctas">
+                    <a href="file:///C:/Users/OPT/Desktop/Shehab%20Tech.html.html#services" class="btn-primary animate" style="animation-delay: 0.150671s;">Our Services</a>
+                    <a href="file:///C:/Users/OPT/Desktop/Shehab%20Tech.html.html#contact" class="btn-secondary animate" style="animation-delay: 0.186624s;">Get Quote</a>
+                </div>
+            </div>
+            <img src="./Shehab Tech - Professional Translation &amp; Tech Solutions_files/photo-1522071820081-009f0129c71c" alt="Professional Services" style="width:100%; max-width:500px; border-radius:20px; box-shadow:var(--shadow-lg);">
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title animate" style="animation-delay: 0.00459412s;">Our Services</h2>
+            <p class="section-subtitle animate" style="animation-delay: 0.0188997s;">Comprehensive solutions tailored to your business needs</p>
+            <div class="services-grid">
+                <div class="service-card animate" style="animation-delay: 0.0234695s;">
+                    <img src="./Shehab Tech - Professional Translation &amp; Tech Solutions_files/photo-1486312338219-ce68d2c6f44d" alt="Translation" class="service-image">
+                    <h3>Translation</h3>
+                    <p>Professional translation services in 30+ languages with native speakers and industry experts.</p>
+                </div>
+                <div class="service-card animate" style="animation-delay: 0.152088s;">
+                    <img src="./Shehab Tech - Professional Translation &amp; Tech Solutions_files/685be7dcd32275d3830664df_blog-cover-09-2022-how-to-do-a-voice-over-professionally-for-online-videos.webp" alt="Voice Over" class="service-image">
+                    <h3>Voice Over</h3>
+                    <p>High-quality voice recording in multiple languages and accents for videos, ads, and Ai trinner.</p>
+                </div>
+                <div class="service-card animate" style="animation-delay: 0.0682336s;">
+                    <img src="./Shehab Tech - Professional Translation &amp; Tech Solutions_files/photo-1551650975-87deedd944c3" alt="Web Development" class="service-image">
+                    <h3>Web Development</h3>
+                    <p>Custom responsive websites and web applications built with modern technologies.</p>
+                </div>
+                <div class="service-card animate" style="animation-delay: 0.063264s;">
+                    <img src="./Shehab Tech - Professional Translation &amp; Tech Solutions_files/photo-1573164713988-8665fc963095" alt="Transcription" class="service-image">
+                    <h3>Transcription</h3>
+                    <p>Accurate audio and video transcription services with fast turnaround times.</p>
+                </div>
+                <div class="service-card animate" style="animation-delay: 0.182187s;">
+                    <img src="./Shehab Tech - Professional Translation &amp; Tech Solutions_files/Data-annotation-featured-image-1.png" alt="Data Annotation" class="service-image">
+                    <h3>Data Annotation</h3>
+                    <p>High-quality data labeling for AI/ML training datasets and computer vision projects.</p>
+                </div>
+                <div class="service-card animate" style="animation-delay: 0.0983545s;">
+                    <img src="./Shehab Tech - Professional Translation &amp; Tech Solutions_files/photo-1517336714731-489689fd1ca8" alt="Mobile Development" class="service-image">
+                    <h3>Mobile App Development</h3>
+                    <p>Native and cross-platform mobile applications for iOS and Android platforms.</p>
+                </div>
+                <div class="service-card animate" style="animation-delay: 0.196048s;">
+                    <img src="./Shehab Tech - Professional Translation &amp; Tech Solutions_files/1612375760515" alt="Excel Automation" class="service-image">
+                    <h3>Excel Automation</h3>
+                    <p>Advanced Excel solutions, VBA automation, dashboards, and data analysis tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section" style="background: var(--light);">
+        <div class="container">
+            <h2 class="section-title animate" style="animation-delay: 0.0110763s;">Portfolio &amp; Experience</h2>
+            <p class="section-subtitle animate" style="animation-delay: 0.0910979s;">Proven track record of successful projects and client satisfaction</p>
+            <div class="portfolio-grid">
+                <a href="https://wa.me/message/FZTYS2C2LZ3LJ1" target="_blank" class="portfolio-item animate" rel="noopener" style="animation-delay: 0.115629s;">
+                    <img src="./Shehab Tech - Professional Translation &amp; Tech Solutions_files/photo-1554224155-6726b3ff858f" alt="Upwork Profile">
+                    <div class="portfolio-overlay">
+                        <h3>Voice over</h3>
+                        <p>Rcording sentences in different languages  </p>
+                        <i class="fas fa-external-link-alt" style="float:right; margin-top:10px; opacity:0.7;"></i>
+                    </div>
+                </a>
+                <div class="portfolio-item animate" style="animation-delay: 0.0220553s;">
+                    <img src="./Shehab Tech - Professional Translation &amp; Tech Solutions_files/photo-1551288049-bebda4e38f71" alt="Translation Project">
+                    <div class="portfolio-overlay">
+                        <h3>Translation Projects</h3>
+                        <p>50+ successful translation projects across multiple languages and industries</p>
+                    </div>
+                </div>
+                <div class="portfolio-item animate" style="animation-delay: 0.0481829s;">
+                    <img src="./Shehab Tech - Professional Translation &amp; Tech Solutions_files/photo-1460925895917-afdab827c52f" alt="Web Development">
+                    <div class="portfolio-overlay">
+                        <h3>Web Applications</h3>
+                        <p>Custom websites and web applications for businesses worldwide</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Get In Touch</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Ready to start your project? Send us a message</p>
+            <div class="contact-grid">
+                <div class="contact-info animate" style="animation-delay: 0.0882954s;">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <div><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <p><a href="mailto:abdallahsheehab@gmail.com" style="color:white;">abdallahsheehab@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <p>October Street<br>Alexandria, Egypt</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div><i class="fas fa-briefcase"></i></div>
+                        <div>
+                            <p>Linkedin</p>
+                            <a href="https://www.linkedin.com/company/shehab-teck/posts?lipi=urn%3Ali%3Apage%3Ad_flagship3_company%3BzYrutpRMTdm%2FLLv2nt4Sog%3D%3D" target="_blank" style="color:var(--accent); font-weight:500;" rel="noopener">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form animate" id="contact-form" style="animation-delay: 0.118173s;">
+                    <div class="form-group">
+                        <input type="text" id="name" required="" placeholder="Your Name *">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" required="" placeholder="Your Email *">
+                    </div>
+                    <div class="form-group">
+                        <select id="service" required="">
+                            <option value="">Select Service *</option>
+                            <option value="Translation">Translation</option>
+                            <option value="Voice Over">Voice Over</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Transcription">Transcription</option>
+                            <option value="Data Annotation">Data Annotation</option>
+                            <option value="Mobile App">Mobile App Development</option>
+                            <option value="Excel">Excel Automation</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" required="" placeholder="Project details... *"></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" style="width:100%; padding:1.2rem; font-size:1.1rem;">
+                        <span id="submit-text">Send Message</span>
+                        <span id="loading-text" style="display:none;">Sending...</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Shehab Tech. All rights reserved. | Professional Translation &amp; Technology Solutions | Alexandria, Egypt</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = `${Math.random() * 0.2}s`;
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Google Sheets Integration
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitText = document.getElementById('submit-text');
+            const loadingText = document.getElementById('loading-text');
+            const button = this.querySelector('button');
+            
+            // Show loading
+            submitText.style.display = 'none';
+            loadingText.style.display = 'inline';
+            button.disabled = true;
+            
+            // Collect form data
+            const formData = {
+                'Timestamp': new Date().toLocaleString('en-US', {timeZone: 'Africa/Cairo'}),
+                'Name': document.getElementById('name').value,
+                'Email': document.getElementById('email').value,
+                'Service': document.getElementById('service').value,
+                'Message': document.getElementById('message').value,
+                'Source': 'Shehab Tech Website'
+            };
+            
+            // Send to Google Sheets via your deployed web app
+            // Replace with your actual Google Apps Script Web App URL
+            fetch('https://script.google.com/macros/s/AKfycbwv0r5o0Xz0oXz0Xz0Xz0Xz0Xz0Xz0Xz0Xz0Xz0Xz0Xz0Xz0X/exec', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(() => {
+                // Success - show confirmation
+                alert('✅ Thank you! Your message has been sent successfully.\n\nWe will contact you within 24 hours.');
+                this.reset();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('❌ Something went wrong. Please try again or email us directly at abdallahsheehab@gmail.com');
+            })
+            .finally(() => {
+                // Reset button
+                submitText.style.display = 'inline';
+                loadingText.style.display = 'none';
+                button.disabled = false;
+            });
+        });
+
+        // Email link fallback
+        document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (!navigator.share) {
+                    // Fallback for desktop
+                    window.location.href = this.href;
+                }
+            });
+        });
+    </script>
+
+
+</body></html>
